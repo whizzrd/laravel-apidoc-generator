@@ -38,10 +38,10 @@ class GetFromHeaderTag extends Strategy
             if (class_exists(LaravelFormRequest::class) && $parameterClass->isSubclassOf(LaravelFormRequest::class)
                 || class_exists(DingoFormRequest::class) && $parameterClass->isSubclassOf(DingoFormRequest::class)) {
                 $formRequestDocBlock = new DocBlock($parameterClass->getDocComment());
-                $queryParametersFromDocBlock = $this->getUrlParametersFromDocBlock($formRequestDocBlock->getTags());
+                $headersFromDocBlock = $this->getHeadersFromDocBlock($formRequestDocBlock->getTags());
 
-                if (count($queryParametersFromDocBlock)) {
-                    return $queryParametersFromDocBlock;
+                if (count($headersFromDocBlock)) {
+                    return $headersFromDocBlock;
                 }
             }
         }
